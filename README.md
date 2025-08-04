@@ -91,28 +91,12 @@ Paste that URL in Twilio Sandbox as the Webhook URL for incoming messages (add /
 🐳 5. Docker Setup with Persistent Volume
 Create a file docker-compose.yaml with this content:
 
-yaml
+# yaml to prevent data loss
+provided in main branch yaml file prevent data loss.
+save it in user/n8n/ and open power shell and run command 
+docker-compose up -d
 
-version: "3.1"
 
-services:
-  n8n:
-    image: n8nio/n8n
-    restart: always
-    ports:
-      - "5678:5678"
-    environment:
-      - N8N_BASIC_AUTH_ACTIVE=true
-      - N8N_BASIC_AUTH_USER=admin
-      - N8N_BASIC_AUTH_PASSWORD=admin123
-      - N8N_HOST=localhost
-      - N8N_PORT=5678
-      - WEBHOOK_TUNNEL_URL=https://your-ngrok-url.ngrok.io
-      - GENERIC_TIMEZONE=Asia/Kolkata
-      - GOOGLE_CLIENT_ID=your-client-id
-      - GOOGLE_CLIENT_SECRET=your-client-secret
-    volumes:
-      - n8n_data:/home/node/.n8n
 
 volumes:
   n8n_data:
